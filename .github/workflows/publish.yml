@@ -15,7 +15,6 @@ on:
 
 permissions:
   contents: write
-  id-token: write
 
 concurrency:
   group: publish-${{ github.ref }}
@@ -92,10 +91,16 @@ jobs:
           for package_dir in npm/npm-*; do
             node -e "const fs=require('fs'); const path='$package_dir/package.json'; const root=require('./package.json'); const pkg=require('./'+path); pkg.version=root.version; fs.writeFileSync(path, JSON.stringify(pkg, null, '\t') + '\n')"
           done
+      - name: Configure npm auth
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          test -n "$NPM_TOKEN"
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
       - name: Publish platform packages
         run: |
           for package_dir in npm/npm-*; do
-            npm publish "$package_dir" --access public --provenance
+            npm publish "$package_dir" --access public
           done
       - name: Publish main package
-        run: npm publish --access public --provenance
+        run: npm publish --access public
