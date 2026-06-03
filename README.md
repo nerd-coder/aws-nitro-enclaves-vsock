@@ -74,6 +74,11 @@ configured domain to a deterministic `127.77.x.x` address. The native proxy
 then listens on that loopback address at port `443` and relays the connection to
 the parent instance CID `3` on the configured VSock port.
 
+The proxy adds each generated `127.77.x.x` address to `lo` before binding. In a
+minimal enclave network namespace, binding an unconfigured loopback address can
+produce a visible listener that local clients still cannot reach. Treat this as
+kernel loopback setup, not client-runtime behavior.
+
 ## Binary Resolution
 
 The TypeScript wrapper locates the native proxy in this order:

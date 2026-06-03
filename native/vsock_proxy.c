@@ -14,13 +14,11 @@
  * /etc/hosts entry that resolves each configured domain to a generated
  * 127.77.x.x address, and this helper listens on that address at port 443.
  *
- * The explicit loopback alias setup below is important. A previous approach
- * used IP_FREEBIND to bind 127.77.x.x without adding the address to lo. That
- * made /proc/net/tcp show a LISTEN socket, but Bun still received ECONNREFUSED
- * when connecting to the same address. The address must be present on lo so the
- * kernel treats it as a real local destination. We add a /32 alias with
- * RTM_NEWADDR before bind(), then fail loudly if the enclave cannot configure
- * its own loopback interface.
+ * The explicit loopback alias setup below is important. In a minimal enclave
+ * rootfs, binding a generated 127.77.x.x address is not enough by itself: the
+ * address must be present on lo so the kernel treats it as a real local
+ * destination. We add a /32 alias with RTM_NEWADDR before bind(), then fail
+ * loudly if the enclave cannot configure its own loopback interface.
  *
  * Each accepted connection is handled in a detached pthread so accept() is
  * never blocked by an in-flight request.
@@ -405,9 +403,9 @@ static int run_egress(
   }
 
   /*
-   * Configure the alias before bind(). Do not replace this with IP_FREEBIND:
-   * freebind can create a visible listener that still rejects local clients
-   * because the destination address is not configured on lo.
+   * Configure the alias before bind(). Do not rely on IP_FREEBIND here: it can
+   * create a visible listener while leaving the address absent from lo in the
+   * minimal enclave network namespace.
    */
   if (add_loopback_address(listen_addr) < 0) return 1;
 
