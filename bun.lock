@@ -12,8 +12,8 @@
         "typescript": "^6.0.3",
       },
       "optionalDependencies": {
-        "@nerd-coder/aws-nitro-enclaves-vsock-linux-arm64-gnu": "0.1.3",
-        "@nerd-coder/aws-nitro-enclaves-vsock-linux-x64-gnu": "0.1.3",
+        "@nerd-coder/aws-nitro-enclaves-vsock-linux-arm64-gnu": "0.1.4",
+        "@nerd-coder/aws-nitro-enclaves-vsock-linux-x64-gnu": "0.1.4",
       },
     },
   },
