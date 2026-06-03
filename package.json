@@ -1,68 +1,68 @@
 {
-  "name": "@nerd-coder/aws-nitro-enclaves-vsock",
-  "version": "0.1.0",
-  "description": "TypeScript helpers and prebuilt proxy binaries for AWS Nitro Enclaves VSock networking.",
-  "type": "module",
-  "main": "./dist/index.js",
-  "types": "./dist/index.d.ts",
-  "repository": "github:nerd-coder/aws-nitro-enclaves-vsock",
-  "license": "Apache-2.0",
-  "keywords": [
-    "aws",
-    "nitro",
-    "nitro-enclaves",
-    "enclave",
-    "vsock",
-    "typescript",
-    "bun",
-    "node"
-  ],
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
-    },
-    "./package.json": "./package.json"
-  },
-  "bin": {
-    "aws-nitro-enclaves-vsock-proxy": "./bin/aws-nitro-enclaves-vsock-proxy.js"
-  },
-  "files": [
-    "bin/aws-nitro-enclaves-vsock-proxy.js",
-    "dist",
-    "native",
-    "scripts/build-proxy.mjs"
-  ],
-  "engines": {
-    "node": ">=18.17.0"
-  },
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org/",
-    "access": "public"
-  },
-  "scripts": {
-    "build": "tsdown",
-    "build:proxy": "node scripts/build-proxy.mjs",
-    "check": "bun run check:types && bun test && bun run build",
-    "check:types": "tsc -p tsconfig.json",
-    "clean": "rm -rf bin/vsock_proxy dist npm",
-    "package:platform": "node scripts/create-platform-package.mjs",
-    "release": "release-it",
-    "release:dry-run": "release-it --dry-run",
-    "sync-release-version": "node scripts/sync-release-version.mjs",
-    "test": "bun test",
-    "version": "bun run sync-release-version"
-  },
-  "optionalDependencies": {
-    "@nerd-coder/aws-nitro-enclaves-vsock-linux-x64-gnu": "0.1.0",
-    "@nerd-coder/aws-nitro-enclaves-vsock-linux-arm64-gnu": "0.1.0"
-  },
-  "devDependencies": {
-    "@types/bun": "^1.3.14",
-    "@types/node": "^24.10.1",
-    "release-it": "^20.2.0",
-    "tsdown": "0.22.0",
-    "typescript": "^6.0.3"
-  },
-  "packageManager": "bun@1.3.14"
+	"name": "@nerd-coder/aws-nitro-enclaves-vsock",
+	"version": "0.1.1",
+	"description": "TypeScript helpers and prebuilt proxy binaries for AWS Nitro Enclaves VSock networking.",
+	"type": "module",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"repository": "github:nerd-coder/aws-nitro-enclaves-vsock",
+	"license": "Apache-2.0",
+	"keywords": [
+		"aws",
+		"nitro",
+		"nitro-enclaves",
+		"enclave",
+		"vsock",
+		"typescript",
+		"bun",
+		"node"
+	],
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js"
+		},
+		"./package.json": "./package.json"
+	},
+	"bin": {
+		"aws-nitro-enclaves-vsock-proxy": "./bin/aws-nitro-enclaves-vsock-proxy.js"
+	},
+	"files": [
+		"bin/aws-nitro-enclaves-vsock-proxy.js",
+		"dist",
+		"native",
+		"scripts/build-proxy.mjs"
+	],
+	"engines": {
+		"node": ">=18.17.0"
+	},
+	"publishConfig": {
+		"registry": "https://registry.npmjs.org/",
+		"access": "public"
+	},
+	"scripts": {
+		"build": "tsdown",
+		"build:proxy": "node scripts/build-proxy.mjs",
+		"check": "bun run check:types && bun test && bun run build",
+		"check:types": "tsc -p tsconfig.json",
+		"clean": "rm -rf bin/vsock_proxy dist npm",
+		"package:platform": "node scripts/create-platform-package.mjs",
+		"release": "release-it",
+		"release:dry-run": "release-it --dry-run",
+		"sync-release-version": "node scripts/sync-release-version.mjs",
+		"test": "bun test",
+		"version": "bun run sync-release-version"
+	},
+	"optionalDependencies": {
+		"@nerd-coder/aws-nitro-enclaves-vsock-linux-x64-gnu": "0.1.1",
+		"@nerd-coder/aws-nitro-enclaves-vsock-linux-arm64-gnu": "0.1.1"
+	},
+	"devDependencies": {
+		"@types/bun": "^1.3.14",
+		"@types/node": "^24.10.1",
+		"release-it": "^20.2.0",
+		"tsdown": "0.22.0",
+		"typescript": "^6.0.3"
+	},
+	"packageManager": "bun@1.3.14"
 }
