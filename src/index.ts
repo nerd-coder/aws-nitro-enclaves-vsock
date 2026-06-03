@@ -1,9 +1,9 @@
 export {
   getVsockProxyPlatformPackageName,
+  type ResolveVsockProxyBinaryOptions,
   resolveVsockProxyBinary,
   VSOCK_PROXY_BINARY_ENV,
   VSOCK_PROXY_BINARY_NAME,
-  type ResolveVsockProxyBinaryOptions,
 } from './binary.ts'
 export {
   buildHostsContent,
@@ -11,24 +11,24 @@ export {
   DEFAULT_EGRESS_HOSTS_PATH,
   DEFAULT_EGRESS_LISTEN_PORT,
   parseVsockProxyMap,
-  writeEgressHostsFile,
   type VsockEgressEndpoint,
   type VsockProxyRoute,
+  writeEgressHostsFile,
 } from './hosts.ts'
 export {
-  NITRO_PARENT_CID,
-  startEgressProxy,
-  startIngressProxy,
-  startVsockProxySet,
+  type SpawnVsockProxyOptions,
+  spawnVsockProxy,
+  type VsockProxyProcess,
+} from './process.ts'
+export {
   type EgressProxyConfig,
   type IngressProxyConfig,
+  NITRO_PARENT_CID,
   type ProxySetInboundConfig,
   type ProxySetOutboundConfig,
   type StartedVsockProxy,
   type StartProxySetConfig,
+  startEgressProxy,
+  startIngressProxy,
+  startVsockProxySet,
 } from './proxy.ts'
-export {
-  spawnVsockProxy,
-  type SpawnVsockProxyOptions,
-  type VsockProxyProcess,
-} from './process.ts'

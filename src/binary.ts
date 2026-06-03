@@ -4,8 +4,7 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 export const VSOCK_PROXY_BINARY_NAME = 'vsock_proxy'
-export const VSOCK_PROXY_BINARY_ENV =
-  'AWS_NITRO_ENCLAVES_VSOCK_PROXY_BIN'
+export const VSOCK_PROXY_BINARY_ENV = 'AWS_NITRO_ENCLAVES_VSOCK_PROXY_BIN'
 
 const PACKAGE_NAME = '@nerd-coder/aws-nitro-enclaves-vsock'
 const BUN_VIRTUAL_FS_PREFIX = '/$bunfs/'

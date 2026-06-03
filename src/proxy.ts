@@ -1,12 +1,12 @@
 import {
   buildVsockEgressEndpoints,
   DEFAULT_EGRESS_LISTEN_PORT,
-  writeEgressHostsFile,
   type VsockEgressEndpoint,
+  writeEgressHostsFile,
 } from './hosts.ts'
 import {
-  spawnVsockProxy,
   type SpawnVsockProxyOptions,
+  spawnVsockProxy,
   type VsockProxyProcess,
 } from './process.ts'
 
@@ -63,9 +63,7 @@ export function startIngressProxy(
   }
 }
 
-export function startEgressProxy(
-  config: EgressProxyConfig
-): StartedVsockProxy {
+export function startEgressProxy(config: EgressProxyConfig): StartedVsockProxy {
   const listenPort = config.listenPort ?? DEFAULT_EGRESS_LISTEN_PORT
   validatePort(listenPort, 'listenPort')
   validatePort(config.hostVsockPort, 'hostVsockPort')
@@ -121,8 +119,7 @@ function startEgressProxies(
       ...config,
       hostVsockPort: endpoint.vsockPort,
       listenAddress: endpoint.loopbackAddress,
-      listenPort:
-        config.outbound?.listenPort ?? DEFAULT_EGRESS_LISTEN_PORT,
+      listenPort: config.outbound?.listenPort ?? DEFAULT_EGRESS_LISTEN_PORT,
     }),
     role: `outbound:${endpoint.domain}`,
   }))

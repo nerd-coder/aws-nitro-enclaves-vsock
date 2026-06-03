@@ -15,7 +15,10 @@ const packageJson = JSON.parse(
 )
 
 const target = readArg('--target') ?? inferTarget()
-const binaryPath = resolve(packageRoot, readArg('--binary') ?? 'bin/vsock_proxy')
+const binaryPath = resolve(
+  packageRoot,
+  readArg('--binary') ?? 'bin/vsock_proxy'
+)
 const packageName = `${packageJson.name}-${target}`
 const outputDir = resolve(packageRoot, 'npm', target)
 const outputBin = resolve(outputDir, 'bin/vsock_proxy')
@@ -58,7 +61,9 @@ function readArg(name) {
 
 function inferTarget() {
   if (process.platform !== 'linux') {
-    throw new Error(`Cannot infer a Linux package target from ${process.platform}`)
+    throw new Error(
+      `Cannot infer a Linux package target from ${process.platform}`
+    )
   }
   if (process.arch === 'x64') return 'linux-x64-gnu'
   if (process.arch === 'arm64') return 'linux-arm64-gnu'

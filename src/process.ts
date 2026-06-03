@@ -1,15 +1,14 @@
 import {
-  spawn,
   type ChildProcessWithoutNullStreams,
   type StdioOptions,
+  spawn,
 } from 'node:child_process'
 import {
-  resolveVsockProxyBinary,
   type ResolveVsockProxyBinaryOptions,
+  resolveVsockProxyBinary,
 } from './binary.ts'
 
-export interface SpawnVsockProxyOptions
-  extends ResolveVsockProxyBinaryOptions {
+export interface SpawnVsockProxyOptions extends ResolveVsockProxyBinaryOptions {
   cwd?: string
   detached?: boolean
   env?: NodeJS.ProcessEnv
