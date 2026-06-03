@@ -1,0 +1,7 @@
+# Dependencies
+/node_modules/
+
+# Build outputs
+/bin/vsock_proxy
+/dist/
+/npm/
