@@ -93,59 +93,6 @@ The colocated `process.execPath` lookup is useful for Bun standalone
 executables, where the final enclave image can copy `vsock_proxy` next to the
 compiled TypeScript application.
 
-## CLI
+## License
 
-```sh
-aws-nitro-enclaves-vsock-proxy /tmp/app.sock 8000
-aws-nitro-enclaves-vsock-proxy egress 127.77.0.1 443 9000
-```
-
-## Development
-
-Install the pinned tools with mise:
-
-```sh
-mise install
-```
-
-Install dependencies:
-
-```sh
-bun install --frozen-lockfile
-```
-
-Build the TypeScript package:
-
-```sh
-bun run build
-```
-
-Build the native proxy on Linux:
-
-```sh
-bun run build:proxy
-```
-
-Run local checks:
-
-```sh
-bun run check
-```
-
-The native proxy requires Linux headers such as `linux/vm_sockets.h`; local
-macOS checks only validate TypeScript and pure helper behavior.
-
-## CI and Release Setup
-
-The `Publish` workflow builds native proxy packages for Linux x64 and Linux
-arm64, creates a release commit/tag with `release-it`, publishes the platform
-packages, then publishes the main TypeScript package.
-
-npm authentication and provenance are expected to use npm Trusted Publisher
-with the workflow filename `publish.yml`, so no `NPM_TOKEN` secret is required.
-
-Recommended branch protection:
-
-- Require normal CI checks before merging pull requests to `main`.
-- If `main` is protected, allow the `Publish` workflow or a dedicated release
-  token to push release commits and tags after the workflow's checks pass.
+Apache 2.0
